@@ -1,0 +1,17 @@
+import java.io.File
+
+
+fun main() {
+
+    var (a) = File("input.txt").readLines()[0].map{it.toInt()}
+    var b = 0
+    while (a!=0) {
+        b = b*10+a % 10
+        a = a / 10
+    }
+    println(b)
+}
+
+fun println(string: String) {
+    File("output.txt").writeText(string)
+}
