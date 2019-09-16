@@ -1,4 +1,5 @@
 import java.io.File
+import kotlin.math.absoluteValue
 
 val lines = File("input.txt").readLines()
 
@@ -7,7 +8,7 @@ fun main() {
     var answer = ""
 
     lines[0].split(" ")
-        .map { it.toInt() }
+        .map { it.toInt().absoluteValue }
         .sortedDescending()
         .forEach { answer += "$it " }
 
