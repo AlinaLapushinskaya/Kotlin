@@ -3,15 +3,15 @@ import java.io.File
 
 fun main() {
 
-    var (a) = File("input.txt").readLines()[0].split(' ').map{it.toInt()}
+    var a = File("input.txt").readLines()[0].map{it.toInt()}
     var b = 0
     while (a!=0) {
         b = b*10+a % 10
         a = a / 10
     }
-    println(b)
+    printFile(b)
 }
 
-fun println(string: String) {
+fun printFile(string: String) {
     File("output.txt").writeText(string)
 }
