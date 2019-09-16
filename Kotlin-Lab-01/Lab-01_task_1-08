@@ -16,4 +16,5 @@ fun main() {
 
 fun printToFile(string: String) {
     File("output.txt").writeText(string)
+    println(string)
 }
