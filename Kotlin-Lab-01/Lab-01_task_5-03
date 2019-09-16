@@ -1,0 +1,16 @@
+import java.io.File
+
+val lines = File("input.txt").readLines()
+fun main() {
+    var answer = ""
+
+    lines[0].split(" ")
+        .map { it.toString() }
+        .indexOf(" ")
+
+    printToFile(lines.indexOf(" ")+1)
+}
+
+fun printToFile(Int: Int) {
+    File("output.txt")
+}
