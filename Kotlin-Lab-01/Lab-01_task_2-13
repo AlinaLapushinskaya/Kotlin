@@ -1,17 +1,22 @@
-import java.io.File
+import java.*
+import java.util.*
+import java.lang.*
+import java.io.*
 
+/* Name of the class has to be "Main" only if the class is public. */
+internal object Ideone {
+   @Throws(java.lang.Exception::class)
+    @JvmStatic
+    fun main(args: Array<String>) {
+       val s=Scanner(System.`in`)
+        var n = s.nextInt()
+   
 
-fun main() {
-
-    var a = File("input.txt").readLines()[0].map{it.toInt()}
-    var b = 0
-    while (a!=0) {
-        b = b*10+a % 10
-        a = a / 10
+        var n1 = 0
+        while (n != 0) {
+            n1 = n1 * 10 + n % 10
+            n /= 10
+        }
+        println(n1)
     }
-    printFile(b)
-}
-
-fun printFile(string: String) {
-    File("output.txt").writeText(string)
 }
