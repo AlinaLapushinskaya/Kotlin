@@ -1,0 +1,27 @@
+import java.io.File
+import kotlin.math.abs
+
+fun main(args: Array<String>){
+
+    val numbers: Array<Array<Int>> = Array(6,{ Array(2,{0}) })
+
+    var i = 0
+    File("input.txt").forEachLine {var (a, b) = it.split(' ')
+        numbers[i] = arrayOf(Integer.parseInt(a), Integer.parseInt(b))
+        i++
+    }
+
+
+    var a = numbers[5][0]
+    var b = numbers[5][1]
+    var str = "";
+    for(i in numbers)
+    {
+        if(((abs(a-i[0])==1)&&(abs(b-i[1])==1)) 
+		|| ((a==i[0])&&(abs(b-i[1])==1)) 
+		|| ((abs(a-i[0])==1)&&(b==i[1])))
+            	str+=("${i[0]} ${i[1]}\n")
+    }
+    File("output.txt").writeText(str)
+
+}
