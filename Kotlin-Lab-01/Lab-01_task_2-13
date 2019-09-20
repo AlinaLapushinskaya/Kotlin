@@ -1,22 +1,28 @@
-import java.*
 import java.util.*
 import java.lang.*
 import java.io.*
 
 /* Name of the class has to be "Main" only if the class is public. */
 internal object Ideone {
-   @Throws(java.lang.Exception::class)
+   @Throws(Exception::class)
     @JvmStatic
     fun main(args: Array<String>) {
        val s=Scanner(System.`in`)
         var n = s.nextInt()
-   
+
 
         var n1 = 0
         while (n != 0) {
             n1 = n1 * 10 + n % 10
             n /= 10
         }
-        println(n1)
+       fileprintln(n1)
+
+
+
+    }
+    fun fileprintln(msg:Int)
+    {
+        File("output.txt").writeText(msg.toString())
     }
 }
