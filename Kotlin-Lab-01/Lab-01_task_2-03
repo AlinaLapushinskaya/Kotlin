@@ -1,0 +1,21 @@
+import java.io.File
+
+fun main(args: Array<String>){
+    var x = 0.0
+    var t = 0
+    File("input.txt").forEachLine {
+
+        if(Integer.parseInt(it)!=0){
+            x+=it.toDouble()
+            t++
+        }
+        else
+        {
+            val res:Double = (x/t)
+            File("output.txt").writeText(res.toString())
+            System.exit(0)
+        }
+
+    }
+
+}
