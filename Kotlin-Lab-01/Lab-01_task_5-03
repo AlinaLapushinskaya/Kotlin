@@ -1,16 +1,17 @@
 import java.io.File
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.math.abs
 
-val lines = File("input.txt").readLines()
-fun main() {
-    var answer = ""
+fun main(args: Array<String>){
 
-    lines[0].split(" ")
-        .map { it.toString() }
-        .indexOf(" ")
+    var str=""
+    File("input.txt").forEachLine {
+        str = it
+    }
+    var r = str.indexOf(' ')
 
-    printToFile(lines.indexOf(" ")+1)
-}
+    File("output.txt").writeText("${r+1}")
 
-fun printToFile(Int: Int) {
-    File("output.txt")
+
 }
