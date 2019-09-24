@@ -1,0 +1,56 @@
+import java.io.File
+import kotlin.collections.ArrayList
+
+fun main(){
+
+    var str = File("input.txt").readLines().first()
+    
+    val numbers = str.split(' ')
+    var arr = ArrayList<Int>()
+    var res = 0
+    for(i in numbers)
+    {
+        arr.add(Integer.parseInt(i))
+    }
+    arr.removeAt(0)
+
+    var z = arr.size-1
+    var i=0
+    while(i<z-1){
+        if(arr.size>2) {
+            var x = check(i,arr)
+            if (x>=3) {
+                for(p in 1..x)
+                {
+                    arr.removeAt(i)
+                }
+                res += x
+                i = -1
+                z -= x
+
+            }
+            i++
+        }
+        else
+            break
+    }
+
+
+    File("output.txt").writeText("$res")
+    
+}
+
+fun check(i:Int, n:ArrayList<Int>):Int
+{
+    var r=1
+    for(a in 1..(n.size-1-i))
+    {
+        if(n[i]==n[i+a])
+        {
+            r++
+        }
+        else
+            break
+    }
+    return r
+}
