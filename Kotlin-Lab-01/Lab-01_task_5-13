@@ -1,0 +1,33 @@
+import java.io.File
+
+fun main(){
+    var str=""
+    File("input.txt").forEachLine{str = it }
+    var r1 = 0
+    var r3 = 0
+    var t = 0
+    for(i in 0..str.length-1)
+    {
+        if(str[i] in 'a'..'z')
+        {
+            r1++
+            t++
+            if(r3<t)
+            {
+                r3=t
+            }
+            if(i!=str.length-1)
+                if(str[i+1] !in 'a'..'z')
+                {
+                    t=0
+                }
+        }
+    }
+    var r2 = ""
+    for(i in 0..str.length-1)
+    {
+        if(str[i] !in 'a'..'z')
+            r2+=str[i]
+    }
+    File("output.txt").writeText("$r1\n$r2\n$r3")
+}
