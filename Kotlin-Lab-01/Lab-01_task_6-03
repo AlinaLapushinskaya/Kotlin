@@ -1,0 +1,42 @@
+import java.io.File
+import kotlin.collections.ArrayList
+
+fun main(){
+
+    val lines = File("input.txt").readLines()
+    val (a,b) = lines[0].split(' ')
+    var table = Array(Integer.parseInt(a),
+        {Array(Integer.parseInt(b),{0})})
+    var arr = ArrayList<Int>()
+    for(i in 1..lines.size-1)
+    {
+        var tab = lines[i].split(' ')
+        for(j in tab)
+        {
+            arr.add(Integer.parseInt(j))
+        }
+    }
+    for(i in 0..Integer.parseInt(a)-1)
+    {
+        for(j in 0..Integer.parseInt(b)-1)
+        {
+            table[i][j] = arr[0]
+            arr.removeAt(0)
+        }
+    }
+    var res = ""
+    for(j in 0..Integer.parseInt(b)-1)
+    {
+        var lis = ArrayList<Int>()
+        for(i in 0..Integer.parseInt(a)-1)
+        {
+            lis.add(table[i][j])
+
+        }
+        lis.sort()
+        res+="${lis[lis.size-1]} "
+    }
+
+    File("output.txt").writeText("$res")
+}
+
