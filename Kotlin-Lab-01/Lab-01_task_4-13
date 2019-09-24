@@ -1,0 +1,27 @@
+import java.io.File
+import kotlin.collections.ArrayList
+
+fun main(){
+
+    val strs = File("input.txt").readLines()
+    val numbers = strs[1].split(' ')
+    val arr = ArrayList<Double>()
+    var res = 0
+    for(i in numbers)
+    {
+        arr.add(i.toDouble())
+    }
+    arr.sort()
+    val x = (arr[0]+arr[arr.size-1])/2
+    for(i in arr)
+    {
+        if(i>x)
+        {
+            res++
+        }
+    }
+
+    File("output.txt").writeText("$res")
+
+
+}
