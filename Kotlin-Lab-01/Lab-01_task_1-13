@@ -1,0 +1,56 @@
+import java.io.File
+
+fun main(){
+
+    val arr: Array<Long> = arrayOf(0,0,0,0,0)
+    for(i in 0..4)
+    {
+        arr[i] = readLine()!!.toLong()
+    }
+    for(i in arr)
+    {
+        var x = i
+        var t = 0
+        val arrayList = ArrayList<Int>()
+        while(x>0)
+        {
+            arrayList.add((x%10).toInt())
+            x/=10
+        }
+        if(arrayList.size==3)
+        {
+            for(j in arrayList)
+            {
+                if(j==0)
+                {
+                    t++
+                    break
+                }
+            }
+        }
+
+        if(arrayList.size==4)
+        {
+            val hash = HashSet<Int>()
+            for(j in arrayList)
+            {
+                hash.add(j)
+            }
+            if(hash.size==4)
+            {
+                t++
+            }
+        }
+        if(arrayList[0] ==3 || arrayList[0]==6 || arrayList[0]==9)
+        {
+            t++
+        }
+        if(t==1)
+        {
+            println("YES")
+        }else
+            println("NO")
+    }
+
+}
+
