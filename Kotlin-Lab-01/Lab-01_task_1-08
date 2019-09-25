@@ -4,27 +4,14 @@ val lines = File("input.txt").readLines()
 
 fun main() {
 
-    var answer = mutableListOf<Int>()
+    var answer = ""
 
     lines[0].split(" ")
         .map { it.toInt() }
         .sortedDescending()
-        .forEach { answer.add(it) }
+        .forEach { answer += "$it " }
 
     printToFile(answer)
-}
-
-fun printToFile(answers: List<Int>) {
-    var string = ""
-
-    for (i in 0..answers.lastIndex) {
-        string += answers[i]
-
-        if (i != answers.lastIndex)
-            string += " "
-    }
-
-    printToFile(string)
 }
 
 fun printToFile(string: String) {
