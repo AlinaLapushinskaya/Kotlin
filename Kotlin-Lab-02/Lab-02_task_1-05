@@ -1,0 +1,9 @@
+import java.io.File
+
+fun main() {
+    var num = File("input.txt").readLines()[1].trim()
+        .split(Regex(" "))
+        .map { it.toInt() }
+    var set= num.toSet()
+    File("output.txt").writeText("${set.size}")
+}
