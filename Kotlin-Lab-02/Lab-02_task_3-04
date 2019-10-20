@@ -31,7 +31,26 @@ class Input {
 
     fun nextInts() = readInts(IndexOfLine)
 
-    
+    fun readInt(line: Int) = input[line]
+        .filterSeperators()
+        .toInt()
+
+    fun readInts(line: Int) = input[line]
+        .split(" ")
+        .filter { it.isInt() }
+        .map { it.toInt() }
+    fun <E> add(
+        e: E,
+        spaceEnable: Boolean = true,
+        enterEnable: Boolean = false
+
+    ) {
+        builder.append(e.toString())
+
+        if (spaceEnable) builder.append(" ")
+        if (enterEnable) builder.append("\n")
+    }
+
     fun <E> addList(list: List<E>) {
         for (i in 0..list.lastIndex) {
             add(list[i], true)
@@ -51,5 +70,8 @@ class Input {
         } catch (e: Exception) {
             false
         }
-   
+    private fun String.filterSeperators() = this
+        .filter { it != ' ' }
+        .filter { it != '\n' }
+        .filter { it != '\t' }
 }
