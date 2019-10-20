@@ -1,0 +1,51 @@
+import java.io.File
+import kotlin.math.round
+val input = IO()
+fun main() {
+    val n = input.nextInt()
+    val studentList: MutableList<Student> = mutableListOf()
+    for (i in 1..n) {
+        val line = input.nextLine().split(" ")
+
+        Student(
+            line[0],
+            line[1].toInt(),
+            line[2].toInt(),
+            line[3].toInt()
+        ).also { studentList.add(it) }
+    }
+    studentList.forEach { input.add("${it.name} ${it.average.formatted()}", enterEnable = true) }
+    input.write()
+}
+data class Student(
+    val name: String,
+    val Math: Int,
+    val Physical: Int,
+    val Information: Int,
+    val average: Double = (Math + Physical + Information) / 3.0
+)
+class IO {
+    private val input = File("input.txt").readLines()
+    private var lineIndex = 0
+        get() = field++
+    private var builder = StringBuilder()
+   
+    fun <E> add(
+        e: E,
+        spaceEnable: Boolean = true,
+        enterEnable: Boolean = false
+
+    ) {
+        builder.append(e.toString())
+
+        if (spaceEnable) builder.append(" ")
+        if (enterEnable) builder.append("\n")
+    }
+    fun write() {
+        File("output.txt").writeText(builder.toString())
+        print(builder.toString())
+
+        builder = StringBuilder()
+    }
+   
+}
