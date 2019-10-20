@@ -1,7 +1,7 @@
 import java.io.File
 
 fun main() {
-    var numbers = File("input.txt").readLines()[1].trin()
+    var numbers = File("input.txt").readLines()[1].trim()
         .split(Regex(" "))
         .map { it.toInt() }
     var max:Int = numbers.get(0)
@@ -10,7 +10,7 @@ fun main() {
     var nmin:Int = 0
     var sum: Int = 0
     var s:String=""
-    for(i in 0..numbers.size){
+    for(i in 0..numbers.size - 1){
         sum+=numbers.get(i)
         if(numbers.get(i)>=max)
         {
