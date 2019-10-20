@@ -1,0 +1,21 @@
+import java.io.File
+import kotlin.math.abs
+fun selector (i:Int):Int=chisl(i)
+fun main() {
+    val input =File("input.txt")
+    val output=File("output.txt")
+    var num  =input.readLines().trim().split(Regex(" ")).map{it.toInt()}
+    num =num.sorted()
+    num=num.sortedBy{selector(it)}
+    var s:String =""
+    num.forEach {
+        s += it.toString() + " " }
+        output.writeText("$s")
+    }
+
+    fun chisl(number:Int):Int
+    {
+        var n=abs(number)
+        return n
+    }
+}
