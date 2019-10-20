@@ -25,26 +25,13 @@ class Input {
     private var IndexOfLine = 0
         get() = field++
 
-    fun readInt(line: Int) = input[line]
-        .filterSeperators()
-        .toInt()
+    private var builder = StringBuilder()
 
-    fun readInts(line: Int) = input[line]
-        .split(" ")
-        .filter { it.isInt() }
-        .map { it.toInt() }
-    fun <E> add(
-        e: E,
-        spaceEnable: Boolean = true,
-        enterEnable: Boolean = false
+    fun nextInt() = readInt(IndexOfLine)
 
-    ) {
-        builder.append(e.toString())
+    fun nextInts() = readInts(IndexOfLine)
 
-        if (spaceEnable) builder.append(" ")
-        if (enterEnable) builder.append("\n")
-    }
-
+    
     fun <E> addList(list: List<E>) {
         for (i in 0..list.lastIndex) {
             add(list[i], true)
@@ -57,5 +44,12 @@ class Input {
 
         builder = StringBuilder()
     }
+    fun String.isInt(): Boolean =
+        try {
+            this.toInt()
+            true
+        } catch (e: Exception) {
+            false
+        }
    
 }
