@@ -1,0 +1,75 @@
+import java.io.File
+
+val input = Input()
+
+fun main() {
+
+    val n = input.nextInt()
+    val numbers = input.nextInts()
+    input.addList(numbers.sorted())
+
+    input.output()
+}
+class Input {
+    private val input = File("input.txt").readLines()
+    private var lineIndex = 0
+        get() = field++
+
+    private var builder = StringBuilder()
+    fun nextLine() = input[lineIndex]
+    fun nextInt() = readInt(lineIndex)
+    fun nextInts() = readInts(lineIndex)
+
+    fun readInt(line: Int) = input[line]
+        .filterSeperators()
+        .toInt()
+
+    fun readInts(line: Int) = input[line]
+        .split(" ")
+        .filter { it.isInt() }
+        .map { it.toInt() }
+    
+    fun <E> addLine(
+        e: E,
+        spaceEnable: Boolean = true
+    ) =
+        add(e, spaceEnable, enterEnable = true)
+
+    fun <E> add(
+        e: E,
+        spaceEnable: Boolean = true,
+        enterEnable: Boolean = false
+
+    ) {
+        builder.append(e.toString())
+
+        if (spaceEnable) builder.append(" ")
+        if (enterEnable) builder.append("\n")
+    }
+
+    fun <E> addList(list: List<E>) {
+        for (i in 0..list.lastIndex) {
+            add(list[i], true)
+        }
+        add("\n")
+    }
+    fun output() {
+        File("output.txt").writeText(builder.toString())
+        print(builder.toString())
+
+        builder = StringBuilder()
+    }
+
+    fun String.isInt(): Boolean =
+        try {
+            this.toInt()
+            true
+        } catch (e: Exception) {
+            false
+        }
+
+    private fun String.filterSeperators() = this
+        .filter { it != ' ' }
+        .filter { it != '\n' }
+        .filter { it != '\t' }
+}
