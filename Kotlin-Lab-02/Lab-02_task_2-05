@@ -2,18 +2,18 @@ import java.io.File
 fun main() {
     val input = File("input.txt")
     val output = File("output.txt")
-    var num = input.readLines()[1]
-      .split(Regex(" "))
+    var num = input.readLines()[1].trim()
+        .split(Regex(" "))
         .map { it.toInt() }
     var s: String = ""
     var list = num.toMutableList()
-    var index = (input.readLines()[2].toDouble().toInt())
+    var index = (input.readLines()[2].toDouble().toInt())-1
     var a:Int = list.get(index)
     list.removeAt(index)
     list.add(0,a)
 
     list.forEach {
-        s += it.toString()
+        s += it.toString() + " "
     }
     output.writeText("$s")
 }
