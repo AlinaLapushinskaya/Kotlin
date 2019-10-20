@@ -29,7 +29,12 @@ class IO {
     private var lineIndex = 0
         get() = field++
     private var builder = StringBuilder()
-   
+    fun nextLine() = input[lineIndex]
+    fun nextInt() = readInt(lineIndex)
+
+    fun readInt(line: Int) = input[line]
+        .filterSeperators()
+        .toInt()
     fun <E> add(
         e: E,
         spaceEnable: Boolean = true,
@@ -47,5 +52,19 @@ class IO {
 
         builder = StringBuilder()
     }
-   
+}
+
+fun String.filterSeperators() = this
+    .filter { it != ' ' }
+    .filter { it != '\n' }
+    .filter { it != '\t' }
+
+fun Double.formatted(): String {
+    val roundedAvg = round(this * 100) / 100
+
+    return if (roundedAvg == roundedAvg.toInt().toDouble()) {
+        roundedAvg.toString() + "0"
+    } else {
+        roundedAvg.toString()
+    }
 }
