@@ -1,0 +1,30 @@
+import java.io.File
+
+fun main() {
+    var numbers = File("input.txt").readLines()[1].trin()
+        .split(Regex(" "))
+        .map { it.toInt() }
+    var max:Int = numbers.get(0)
+    var min:Int = numbers.get(0)
+    var nmax:Int = 0
+    var nmin:Int = 0
+    var sum: Int = 0
+    var s:String=""
+    for(i in 0..numbers.size){
+        sum+=numbers.get(i)
+        if(numbers.get(i)>=max)
+        {
+            max = numbers.get(i)
+            nmax=i+1
+        }
+        if(numbers.get(i)<min)
+        {
+            min = numbers.get(i)
+            nmin=i+1
+        }
+
+    }
+    s+=sum.toString()+"\n"+max.toString()+" "+ nmax.toString()+"\n"+min.toString()+" "+nmin.toString()
+    File("output.txt").writeText("$s")
+
+}
