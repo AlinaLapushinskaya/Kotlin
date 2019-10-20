@@ -1,0 +1,24 @@
+import java.io.File
+fun selector(i: Int): Int = evenorodd(i)
+
+fun main() {
+    val input = File("input.txt")
+    val output = File("output.txt")
+    var num = input.readLines().trim()
+        .split(Regex(" "))
+       { it.toInt() }
+    num=num.sorted()
+    num = num.sortedBy { selector(it) }
+    var s:String=""
+    num.forEach {
+        s+=it.toString()+" "
+    }
+    output.writeText("$s")
+}
+
+fun evenorodd(number:Int):Int{
+    var n = number
+    if(n % 2  == 0)
+        return 0
+    else return 1
+}
