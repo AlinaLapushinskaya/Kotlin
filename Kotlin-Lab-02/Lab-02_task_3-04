@@ -1,0 +1,61 @@
+import java.io.File
+
+val input = Input()
+
+fun main() {
+    val PN = input.nextInt()
+    val pNum = input.nextInts().toMutableList()
+    val QM = input.nextInt()
+    val mNum = input.nextInts().toMutableList()
+    if (PN < QM) {
+        pNum.addAll(List(QM - PN) { 0 })
+    } else {
+        mNum.addAll(List(PN - QM) { 0 })
+    }
+    input.addList(
+        pNum.zip(mNum).map { pair -> pair.first + pair.second }
+    )
+    input.output()
+}
+
+class Input {
+
+    private val input = File("input.txt").readLines()
+
+    private var IndexOfLine = 0
+        get() = field++
+
+    fun readInt(line: Int) = input[line]
+        .filterSeperators()
+        .toInt()
+
+    fun readInts(line: Int) = input[line]
+        .split(" ")
+        .filter { it.isInt() }
+        .map { it.toInt() }
+    fun <E> add(
+        e: E,
+        spaceEnable: Boolean = true,
+        enterEnable: Boolean = false
+
+    ) {
+        builder.append(e.toString())
+
+        if (spaceEnable) builder.append(" ")
+        if (enterEnable) builder.append("\n")
+    }
+
+    fun <E> addList(list: List<E>) {
+        for (i in 0..list.lastIndex) {
+            add(list[i], true)
+        }
+        add("\n")
+    }
+    fun output() {
+        File("output.txt").writeText(builder.toString())
+        print(builder.toString())
+
+        builder = StringBuilder()
+    }
+   
+}
