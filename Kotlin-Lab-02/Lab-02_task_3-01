@@ -1,7 +1,7 @@
 import java.io.File
 import kotlin.math.abs
 
-fun selector(i: Int): Int =0
+fun selector(i: Int): Int = evenorodd(i)
 
 fun main() {
     val input = File("input.txt")
@@ -17,4 +17,9 @@ fun main() {
     output.writeText("$s")
 }
 
+fun evenorodd(number:Int):Int{
+    var n = number
+    if(n % 2  == 0)
+        return 0
+    else return 1
 }
