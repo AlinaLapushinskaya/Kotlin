@@ -18,4 +18,3 @@ fun main() {
         var n=abs(number)
         return n
     }
-}
