@@ -4,7 +4,7 @@ fun selector (i:Int):Int=chisl(i)
 fun main() {
     val input =File("input.txt")
     val output=File("output.txt")
-    var num  =input.readLines().trim().split(Regex(" ")).map{it.toInt()}
+    var num  =input.readLines()[1].trim().split(Regex(" ")).map{it.toInt()}
     num =num.sorted()
     num=num.sortedBy{selector(it)}
     var s:String =""
